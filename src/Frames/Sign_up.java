@@ -6,6 +6,7 @@
 package Frames;
 
 import java.util.Calendar;
+import static tapioquitas.Tapioquitas.*;
 import static tapioquitas.Users.*;
 
 /**
@@ -17,6 +18,7 @@ public class Sign_up extends javax.swing.JFrame {
     /**
      * Creates new form Sign_up
      */
+    
     String sName;
     String sLastName;
     String sGender=null;
@@ -28,6 +30,7 @@ public class Sign_up extends javax.swing.JFrame {
 
     public Sign_up() {
         initComponents();
+        //Ocultar las imagenes y texto de error
         imgName.setVisible(false);
         imgLast.setVisible(false);
         imgGender.setVisible(false);
@@ -37,13 +40,16 @@ public class Sign_up extends javax.swing.JFrame {
         lblNotMatch.setVisible(false);
         lblEmpty.setVisible(false);
 
+        //Crear los datos de los combo box
+        //Dia
         for (int i = 1; i <= 31; i++) {
             cbDay.addItem(Integer.toString(i));
         }
+        //Mes
         for (int i = 1; i <= 12; i++) {
             cbMonth.addItem(Integer.toString(i));     
         }
-
+        //Año
         for (int i = Calendar.getInstance().get(Calendar.YEAR); i >= 1900; i--) {
             cbYear.addItem(Integer.toString(i));
         }
@@ -220,17 +226,13 @@ public class Sign_up extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtConPassword)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(btnCreate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblConPassword)
-                            .addComponent(lblPassword)
                             .addComponent(lblEmail)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblBrith)
                                 .addGap(11, 11, 11)
@@ -239,16 +241,6 @@ public class Sign_up extends javax.swing.JFrame {
                                 .addComponent(cbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtPassword)
-                            .addComponent(txtConPassword)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblGender)
-                                .addGap(28, 28, 28)
-                                .addComponent(rbtMale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbtFemale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(imgGender))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblName)
@@ -257,26 +249,45 @@ public class Sign_up extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                                     .addComponent(txtLastName))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(imgName))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(imgLast)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imgEmail)
-                            .addComponent(imgPassword)))
+                                    .addComponent(imgLast)
+                                    .addComponent(imgName)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblGender)
+                                .addGap(28, 28, 28)
+                                .addComponent(rbtMale)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbtFemale)
+                                .addGap(18, 18, 18)
+                                .addComponent(imgGender))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPassword)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                                        .addComponent(txtPassword)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(imgPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(imgEmail, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(0, 100, Short.MAX_VALUE)))
+                .addGap(107, 107, 107))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(lblNotMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(139, 139, 139)
+                        .addComponent(lblNotMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(imgConPassword))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(lblEmpty)))
-                .addGap(73, 206, Short.MAX_VALUE))
+                        .addGap(152, 152, 152)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCreate)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(lblEmpty)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,30 +321,35 @@ public class Sign_up extends javax.swing.JFrame {
                     .addComponent(imgGender))
                 .addGap(49, 49, 49)
                 .addComponent(lblEmail)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(imgEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtEmail))
-                .addGap(31, 31, 31)
-                .addComponent(lblPassword)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(imgPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtPassword))
-                .addGap(18, 18, 18)
-                .addComponent(lblConPassword)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtConPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNotMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imgConPassword))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPassword)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(imgEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(imgPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                        .addGap(9, 9, 9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(lblConPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtConPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(imgConPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNotMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnCreate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblEmpty, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -348,23 +364,26 @@ public class Sign_up extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtMaleActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-
-        sName = txtName.getText();
-        sLastName = txtLastName.getText();
-        sEmail = txtEmail.getText();
-        sPassword = txtPassword.getText();
-        sConPassword = txtConPassword.getText();
-        bPassMatch=true;
-        if (rbtFemale.isSelected()) {
+        
+        //Capturar datos de los textfields
+        sName = txtName.getText();//Nombre
+        sLastName = txtLastName.getText();//Apellido
+        sEmail = txtEmail.getText();//Email
+        sPassword = txtPassword.getText();//Contraseña
+        sConPassword = txtConPassword.getText();//Confirmar contraseña
+        bPassMatch=true;//Guarda si las contraseñas coinciden
+        
+        //Captura valor de los radio botton
+        if (rbtFemale.isSelected()) {//Mujer
             sGender="Female";
         }
-        if (rbtMale.isSelected()) {
+        if (rbtMale.isSelected()) {//Hombre
             sGender="Male";
         }
         
         
-        
-        if(Okey(sName, sLastName, sEmail,sGender, sPassword,sConPassword ) && bPassMatch){
+        //Guardar los datos
+        if(Okey(sName, sLastName, sEmail,sGender, sPassword,sConPassword ) && bPassMatch){//Comprueba que se ingresaron todos los datos
             lblEmpty.setVisible(false);
             CreateUser(sName, sLastName, sGender, sEmail, sPassword, aiBirth);
         }
@@ -419,7 +438,8 @@ public class Sign_up extends javax.swing.JFrame {
         lblNotMatch.setVisible(false);
             imgConPassword.setVisible(false);
     }//GEN-LAST:event_txtConPasswordKeyTyped
-
+    
+    //Metodo para comprobar que se ingresaron todos los datos
     private boolean Okey(String Name, String LastName, String Email, String Gender, String Password, String ConPassword ){
         boolean bAllOkey=true;
         if(Name.equals("")){

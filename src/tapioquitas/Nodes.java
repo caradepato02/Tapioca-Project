@@ -18,6 +18,8 @@ public class Nodes {
     private String sPassword;
     private Nodes nNext;
     private Nodes nPrev;
+    
+    
 
     public Nodes(String sFirstName, String sLastName, String sGender, String sEmail, String sPassword, int[] aiBirth) {
         this.sFirstName = sFirstName;
@@ -29,10 +31,25 @@ public class Nodes {
         this.nNext = null;
         this.nPrev = null;
     }
-     
-    
-    
-    
+
+    public Nodes() {
+        this.sFirstName = "Rodrigo";
+        this.sLastName = "Reyes";
+        this.sGender = "Male";
+        this.sEmail = "rod@gmail.com";
+        this.sPassword = "Hola";
+        this.aiBirth = new int[]{1,2,3};
+        this.nNext = null;
+        this.nPrev = null;
+    }
+
+    public String getsEmail() {
+        return sEmail;
+    }
+
+    public void setsEmail(String sEmail) {
+        this.sEmail = sEmail;
+    }
 
     public String getsFirstName() {
         return sFirstName;
@@ -72,6 +89,22 @@ public class Nodes {
 
     public void setsPassword(String sPassword) {
         this.sPassword = sPassword;
+    }
+
+    public Nodes getnNext() {
+        return nNext;
+    }
+
+    public void setnNext(Nodes nNext) {
+        this.nNext = nNext;
+    }
+
+    public Nodes getnPrev() {
+        return nPrev;
+    }
+
+    public void setnPrev(Nodes nPrev) {
+        this.nPrev = nPrev;
     }
     
 }

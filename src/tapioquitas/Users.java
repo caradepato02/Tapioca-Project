@@ -5,24 +5,49 @@
  */
 package tapioquitas;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Rodrigo
  */
 public class Users {
+
     Nodes nStart;
     Nodes nEnd;
     int lenght;
-    
-   
-    public static void CreateUser(String sFirstName, String sLastName, String sGender, String sEmail, String sPassword, int[] aiBirth){
-        JOptionPane.showMessageDialog(null,sFirstName +" "+ sLastName +" "+ sGender +" "+ sEmail + " "+ sPassword);
+
+    public Users() {
+        nStart = null;
+        nEnd = null;
+    }
+
+    public Users(Nodes nStart) {
+        this.nStart = nStart;
+        this.nEnd = nStart;
+    }
+
+    public void add(Nodes nNode) {
+        if (nStart == null) {
+            nStart = nNode;
+            nEnd = nNode;
+        } else {
+            nEnd.setnNext(nNode);
+            nEnd = nNode;
+        }
+    }
+
+    public void printList(){
+        Nodes nTemp =nStart;
+        while(nTemp!=null){
+            System.out.println(nTemp.getsFirstName()+ " " +nTemp.getsLastName());
+            nTemp=nTemp.getnNext();
+        }
     }
     
-    public void hola(){
-        
-    }
     
+    
+
+    public static void hola() {
+
+    }
+
 }
