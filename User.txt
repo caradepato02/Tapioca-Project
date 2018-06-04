@@ -1,3 +1,13 @@
-Rodrigo,Reyes,Male,rodrigo@gmail.com,hola,1,1,2018
-Rodrigo,Reyes,Male,rodrigo@gmail.com,hola,1,1,2018
-Rodrigo,Reyes,Male,rodrigo@gmail.com,hola,1,1,2018
+Rodrigo,Reyes,Male,rodrigo@gmail.com,hola,1,1,2018,1
+Alondra,Reyes,Female,alondra@gmail.com,hola,1,1,2018,2
+Erika,Reyes,Female,erika@gmail.com,hola,1,1,2018,0
+Tania,Reyes,Female,tania@gmail.com,hola,1,1,2018,6
+Jona,Reyes,Male,jona@gmail.com,hola,1,1,2018,10
+Yelena,Reyes,Male,yelena@gmail.com,hola,1,1,2018,4
+Adriana,Reyes,Male,adriana@gmail.com,hola,1,1,2018,3
+Eduardo,Reyes,Male,eduardo@gmail.com,hola,1,1,2018,7
+Pedro,Reyes,Male,pedro@gmail.com,hola,1,1,2018,8
+Ivan,Reyes,Male,ivan@gmail.com,hola,1,1,2018,9
+Sakura,Reyes,Male,sakura@gmail.com,hola,1,1,2018,13
+Oscar,Reyes,Male,oscar@gmail.com,hola,1,1,2018,0
+Rene,Reyes,Male,luis@gmail.com,hola,1,1,2018,0

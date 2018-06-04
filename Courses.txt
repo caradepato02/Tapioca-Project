@@ -1,0 +1,10 @@
+23
+Curso de guitarra&music&Rodigo&Reyes&6141204169&1&Este es un curso
+Curso de cello&music&Alondra&Reyes&6141204169&2&Este es un curso
+Curso de violin&music&Jona&Reyes&6141204169&10&Este es un curso
+Curso de piano&music&Sakura&Reyes&6141204169&13&Este es un curso
+Curso de tango&dance&Adriana&Reyes&6141204169&3&Este es un curso
+curso de tap&dance&Ivan&Reyes&6141204169&9&Este es un curso de matematicas
+Curso de fisica&school&Eduardo&Reyes&6141204169&7&Este es un curso
+Curso de pintura&visual art&Tania&Reyes&6141204169&6&Este es un curso
+Curso de grafiti&visual art&Pedro&Reyes&6141204169&8&Este es un curso

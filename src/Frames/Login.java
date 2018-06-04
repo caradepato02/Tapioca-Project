@@ -5,6 +5,16 @@
  */
 package Frames;
 
+import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import tapioquitas.Nodes;
+import tapioquitas.Users;
+
 /**
  *
  * @author Rodrigo
@@ -14,8 +24,27 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    public static String sName;//Nombre del usuario
+    public static String sLastname;//Apellido del usuario
+    public static int iCountIndex;//Contador de cursos
+
+    public static Home hHome;//Ventana Home
+
+    public static Users UsersList = new Users();//Lista de usuarios
+    public static Users CoursesList = new Users();//Lista de cursos
+
+    public static Sign_up suSign;//Ventana Sign up
+
     public Login() {
+
         initComponents();
+        setLocationRelativeTo(null);
+        ReadFileUser();
+        ReadFileCourse();
+        UsersList.printList();
+        System.out.println("");
+        CoursesList.printList();
+        System.out.println(iCountIndex);
     }
 
     /**
@@ -29,90 +58,309 @@ public class Login extends javax.swing.JFrame {
 
         lblUser = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        pfPass = new javax.swing.JPasswordField();
+        btnLog_in = new javax.swing.JButton();
         lblHaveAccount = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(300, 500));
+        getContentPane().setLayout(null);
 
-        lblUser.setText("User:");
+        lblUser.setText("Email:");
+        getContentPane().add(lblUser);
+        lblUser.setBounds(60, 140, 40, 14);
 
         lblPassword.setText("Password:");
+        getContentPane().add(lblPassword);
+        lblPassword.setBounds(60, 200, 129, 14);
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
-
-        jButton1.setText("Log in");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
             }
         });
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(60, 170, 177, 20);
+
+        pfPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfPassActionPerformed(evt);
+            }
+        });
+        pfPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pfPassKeyPressed(evt);
+            }
+        });
+        getContentPane().add(pfPass);
+        pfPass.setBounds(60, 220, 177, 20);
+
+        btnLog_in.setText("Log in");
+        btnLog_in.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLog_inActionPerformed(evt);
+            }
+        });
+        btnLog_in.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLog_inKeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnLog_in);
+        btnLog_in.setBounds(110, 250, 80, 23);
 
         lblHaveAccount.setText("Don't have an account?");
+        getContentPane().add(lblHaveAccount);
+        lblHaveAccount.setBounds(10, 300, 140, 14);
 
-        jButton2.setText("Create account");
+        btnCreate.setText("Create account");
+        btnCreate.setBorderPainted(false);
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCreate);
+        btnCreate.setBounds(150, 300, 130, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(lblHaveAccount)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(lblUser))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(lblUser)
-                .addGap(23, 23, 23)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblPassword)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHaveAccount)
-                    .addComponent(jButton2))
-                .addContainerGap(198, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/3.jpg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(500, 500));
+        jLabel1.setMinimumSize(new java.awt.Dimension(500, 500));
+        jLabel1.setPreferredSize(new java.awt.Dimension(500, 500));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 460, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void pfPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_pfPassActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnLog_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLog_inActionPerformed
+        String sEmail = txtEmail.getText();
+        String sPassword = pfPass.getText();
+        if (sEmail.equals("Admin") && sPassword.equals("123")) {//Comprueba si el usario es administrador
+            sName = "Admin";
+            sLastname = "";
+            hHome = new Home();
+            hHome.setVisible(true);
+            hHome.setLocationRelativeTo(this);
+            setVisible(false);
+            txtEmail.setText("");
+            pfPass.setText("");
+        } else if (UsersList.LoginSearchUser(sEmail, sPassword)) {//Comprueba si existe el usuario
+            sName = UsersList.nActiveUser.getsFirstName();
+            sLastname = UsersList.nActiveUser.getsLastName();
+            if (UsersList.nActiveUser.getiIdexCourse() != 0) {
+                CoursesList.LoginSearchCourse(UsersList.nActiveUser.getiIdexCourse());
+            }
+            hHome = new Home();
+            hHome.setVisible(true);
+            hHome.setLocationRelativeTo(this);
+            setVisible(false);
+            txtEmail.setText("");
+            pfPass.setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Email and/or password incorrect", "Ups", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnLog_inActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        suSign = new Sign_up();
+        suSign.setVisible(true);
+        suSign.setLocationRelativeTo(this);
+        setVisible(false);
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void pfPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPassKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            new Home().setVisible(true);
+            dispose();
+            /*     
+        btnLog_in.requestFocus(); 
+        btnLog_in.setBackground(Color.WHITE);
+        pfPass.setBackground(Color.WHITE);
+             */
+
+        }
+    }//GEN-LAST:event_pfPassKeyPressed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            pfPass.requestFocus();
+            pfPass.setBackground(Color.WHITE);
+            txtEmail.setBackground(Color.WHITE);
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void btnLog_inKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLog_inKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            new Home().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnLog_inKeyPressed
+
+    public static void ReadFileUser() {
+        File file = new File("User.txt");
+        Scanner scScan;
+        int iAge[];
+        try {
+
+            scScan = new Scanner(file);
+            while (scScan.hasNextLine()) {
+                String sUser = scScan.nextLine();
+                Scanner scDelimitar = new Scanner(sUser);
+                scDelimitar.useDelimiter("\\s*,\\s*");
+                Nodes nNodo = new Nodes();
+                nNodo.setsFirstName(scDelimitar.next());
+                nNodo.setsLastName(scDelimitar.next());
+                nNodo.setsGender(scDelimitar.next());
+                nNodo.setsEmail(scDelimitar.next());
+                nNodo.setsPassword(scDelimitar.next());
+                iAge = new int[3];
+                iAge[0] = Integer.parseInt((String) scDelimitar.next());
+                iAge[1] = Integer.parseInt((String) scDelimitar.next());
+                iAge[2] = Integer.parseInt((String) scDelimitar.next());
+                nNodo.setAiBirth(iAge);
+                nNodo.setiIdexCourse(Integer.parseInt((String) scDelimitar.next()));
+                UsersList.add(nNodo);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error leyendo usuarios");
+        }
+
+    }
+
+    public static void ReadFileCourse() {
+        File file = new File("Courses.txt");
+        Scanner scScan;
+        try {
+
+            scScan = new Scanner(file);
+            iCountIndex = Integer.parseInt(scScan.nextLine());
+            while (scScan.hasNextLine()) {
+                String sUser = scScan.nextLine();
+                Scanner scDelimitar = new Scanner(sUser);
+                scDelimitar.useDelimiter("\\s*&\\s*");
+
+                Nodes nNodo = new Nodes();
+                nNodo.setsCourseName(scDelimitar.next());
+                nNodo.setsCategory(scDelimitar.next());
+                nNodo.setsFirstName(scDelimitar.next());
+                nNodo.setsLastName(scDelimitar.next());
+                nNodo.setsNumber(scDelimitar.next());
+                nNodo.setiIdexCourse(Integer.parseInt((String) scDelimitar.next()));
+                nNodo.setsDescription(scDelimitar.next());
+                CoursesList.add(nNodo);
+            }
+        } catch (Exception e) {
+            System.out.println("Error leyendo cursos");
+        }
+
+    }
+
+    public static void saveUser() {
+        FileWriter fwWrite = null;
+        BufferedWriter bwWrite = null;
+        try {
+            fwWrite = new FileWriter("User.txt");
+            bwWrite = new BufferedWriter(fwWrite);
+            for (int i = 0; i < UsersList.getLenght(); i++) {//Escribe los datos en el archivo
+                String[] asUsers = UsersList.getAllUsers(i);
+                bwWrite.write(asUsers[0] + ","
+                        + asUsers[1] + ","
+                        + asUsers[2] + ","
+                        + asUsers[3] + ","
+                        + asUsers[4] + ","
+                        + asUsers[5] + ","
+                        + asUsers[6] + ","
+                        + asUsers[7] + ","
+                        + asUsers[8]);
+                bwWrite.newLine();
+            }
+            bwWrite.close();
+
+        } catch (Exception e) {
+            System.out.println("Error guardando");
+        } finally {
+            if (fwWrite != null) {
+                try {//cierra el flujo principal
+                    fwWrite.close();
+                } catch (Exception e) {
+                    System.out.println("Error guardando");
+                }
+            }
+        }
+        System.out.println("Datos guardados");
+    }
+
+    public static void saveCourser() {
+        FileWriter fwWrite = null;
+        BufferedWriter bwWrite = null;
+        try {
+            fwWrite = new FileWriter("Courses.txt");
+            bwWrite = new BufferedWriter(fwWrite);
+            bwWrite.write(String.valueOf(iCountIndex));
+            bwWrite.newLine();
+            for (int i = 0; i < CoursesList.getLenght(); i++) {//Escribe los datos en el archivo
+                String[] asCourses = CoursesList.getAllCourse(i);
+                bwWrite.write(asCourses[0] + "&"
+                        + asCourses[1] + "&"
+                        + asCourses[2] + "&"
+                        + asCourses[3] + "&"
+                        + asCourses[4] + "&"
+                        + asCourses[5] + "&"
+                        + asCourses[6]);
+                bwWrite.newLine();
+            }
+            bwWrite.close();
+
+        } catch (Exception e) {
+            System.out.println("Error guardando");
+
+        } finally {
+            if (fwWrite != null) {
+                try {//cierra el flujo principal
+                    fwWrite.close();
+                } catch (Exception e) {
+                    System.out.println("Error guardando");
+                }
+            }
+        }
+    }
+
+    public static boolean Search(String sEmail, String sPass) throws Exception {
+        Scanner scScan = new Scanner(new File("User.txt"));
+        while (scScan.hasNext()) {
+            String sLine = scScan.nextLine();
+            Scanner scDelimitar = new Scanner(sLine);
+            scDelimitar.useDelimiter("\\s*,\\s*");
+            scDelimitar.next();
+            scDelimitar.next();
+            scDelimitar.next();
+            if (scDelimitar.next().equals(sEmail) && scDelimitar.next().equals(sPass)) {
+
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * @param args the command line arguments
@@ -145,17 +393,19 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnLog_in;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblHaveAccount;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
+    private javax.swing.JPasswordField pfPass;
+    private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 }

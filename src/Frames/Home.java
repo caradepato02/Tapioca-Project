@@ -5,8 +5,9 @@
  */
 package Frames;
 
-import javax.swing.JScrollPane;
-import static tapioquitas.Tapioquitas.*;
+import java.awt.Color;
+import java.awt.GridLayout;
+import tapioquitas.Tapioquitas;
 
 /**
  *
@@ -17,9 +18,22 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    public static CreateCourses ccCreate;
+
     public Home() {
         initComponents();
-        
+        panel.setLayout(new GridLayout(0, 1, 0, 5));
+        for (int i = 0; i < Login.CoursesList.getLenght(); i++) {
+            panel.add(new ViewCourse(Login.CoursesList.getCourses(i, 0)));
+        }
+
+        jmCourse.setText(Login.sName + " " + Login.sLastname);
+        if (Login.sName.equals("Admin")) {
+
+        } else if (Login.UsersList.nActiveUser.getiIdexCourse() != 0) {
+            jmiCourse.setText("Your course");
+        }
+
     }
 
     /**
@@ -31,87 +45,119 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        panel = new javax.swing.JLayeredPane();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jmCourse = new javax.swing.JMenu();
+        jmiCourse = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(600, 600));
+        setMinimumSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 600));
+        getContentPane().setLayout(null);
 
         txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtSearchMouseClicked(evt);
             }
         });
-
-        btnSearch.setText("jButton1");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "", "", "null", "null"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setHeaderValue(getTitle());
-        }
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(100, 50, 284, 20);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        btnSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSearchKeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnSearch);
+        btnSearch.setBounds(400, 50, 80, 23);
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 488, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 318, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch)
-                .addGap(249, 249, 249))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        jScrollPane2.setViewportView(panel);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(50, 140, 490, 320);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Music", "Dance", "School", "Visual art", " " }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(147, 104, 71, 22);
+
+        jLabel1.setText("Category:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(69, 104, 70, 14);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\erika\\Documents\\proyecto netbans\\3.jpg")); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(600, 600));
+        jLabel2.setMinimumSize(new java.awt.Dimension(600, 600));
+        jLabel2.setPreferredSize(new java.awt.Dimension(600, 600));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, -10, 850, 650);
+
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 153));
+
+        jmCourse.setText("Course");
+
+        jmiCourse.setText("Create course");
+        jmiCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCourseActionPerformed(evt);
+            }
+        });
+        jmCourse.add(jmiCourse);
+
+        jMenuItem1.setText("Logout");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jmCourse.add(jMenuItem1);
+
+        jMenuBar1.add(jmCourse);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,6 +165,143 @@ public class Home extends javax.swing.JFrame {
     private void txtSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        panel.removeAll();
+        switch ((String) (jComboBox1.getSelectedItem())) {
+            case "All":
+                for (int i = 0; i < Login.CoursesList.getLenght(); i++) {
+                    panel.add(new ViewCourse(Login.CoursesList.getCourses(i, 0)));
+                }
+                break;
+
+            case "Music":
+                for (int i = 0; i < Login.CoursesList.getiMusicLenght(); i++) {
+                    panel.add(new ViewCourse(Login.CoursesList.getCourses(i, 1)));
+                }
+                break;
+
+            case "Dance":
+                for (int i = 0; i < Login.CoursesList.getiDanceLenght(); i++) {
+                    panel.add(new ViewCourse(Login.CoursesList.getCourses(i, 2)));
+                }
+                break;
+
+            case "School":
+                for (int i = 0; i < Login.CoursesList.getiSchoolLenght(); i++) {
+                    panel.add(new ViewCourse(Login.CoursesList.getCourses(i, 3)));
+                }
+                break;
+
+            case "Visual art":
+                for (int i = 0; i < Login.CoursesList.getiVisualLenght(); i++) {
+                    panel.add(new ViewCourse(Login.CoursesList.getCourses(i, 4)));
+                }
+                break;
+        }
+        repintar();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jmiCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCourseActionPerformed
+
+        ccCreate = new CreateCourses();
+        ccCreate.setVisible(true);
+        ccCreate.setLocationRelativeTo(this);
+        this.dispose();
+    }//GEN-LAST:event_jmiCourseActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Tapioquitas.lLogin.setVisible(true);
+        Tapioquitas.lLogin.setLocationRelativeTo(this);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        panel.removeAll();
+        String sFind = txtSearch.getText();
+        for (int i = 0; i < Login.CoursesList.getLenght(); i++) {
+            String[] sData = Login.CoursesList.SearchCourse(i, 0, sFind);
+            if (sData[0] != null) {
+                panel.add(new ViewCourse(sData));
+            }
+        }
+
+        /*switch ((String) (jComboBox1.getSelectedItem())) {
+            case "All":
+                for (int i = 0; i < Login.CoursesList.getLenght(); i++) {
+                    String[] sData= Login.CoursesList.SearchCourse(i, 0, sFind);
+                    if(sData[0]!=null){
+                        panel.add(new ViewCourse(sData));
+                    }
+                }
+                break;
+
+            case "Music":
+                for (int i = 0; i < Login.CoursesList.getiMusicLenght(); i++) {
+                    String[] sData= Login.CoursesList.SearchCourse(i, 1, sFind);
+                    if(sData[0]!=null){
+                        panel.add(new ViewCourse(sData));
+                    }
+                }
+                break;
+                
+            case "Dance":
+                for (int i = 0; i < Login.CoursesList.getiDanceLenght(); i++) {
+                    String[] sData= Login.CoursesList.SearchCourse(i, 2, sFind);
+                    if(sData[0]!=null){
+                        panel.add(new ViewCourse(sData));
+                    }
+                }
+                break;
+                
+            case "School":
+                for (int i = 0; i < Login.CoursesList.getiSchoolLenght(); i++) {
+                    String[] sData= Login.CoursesList.SearchCourse(i, 3, sFind);
+                    if(sData[0]!=null){
+                        panel.add(new ViewCourse(sData));
+                    }
+                }
+                break;
+                
+            case "Visual art":
+                for (int i = 0; i < Login.CoursesList.getiVisualLenght(); i++) {
+                    String[] sData= Login.CoursesList.SearchCourse(i, 4, sFind);
+                    if(sData[0]!=null){
+                        panel.add(new ViewCourse(sData));
+                    }
+                }
+                break;
+        }
+         */
+        repintar();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchKeyPressed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        {
+
+            btnSearch.requestFocus();
+            btnSearch.setBackground(Color.WHITE);
+            txtSearch.setBackground(Color.WHITE);
+
+        }
+
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void btnSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSearchKeyPressed
+        {
+            new ViewCourse().setVisible(true);
+            dispose();
+
+        }
+    }//GEN-LAST:event_btnSearchKeyPressed
+    public void repintar() {
+        panel.revalidate();
+        panel.repaint();
+    }
 
     /**
      * @param args the command line arguments
@@ -150,6 +333,7 @@ public class Home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
                 new Home().setVisible(true);
             }
         });
@@ -157,9 +341,16 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JMenu jmCourse;
+    private javax.swing.JMenuItem jmiCourse;
+    public static javax.swing.JLayeredPane panel;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
